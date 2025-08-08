@@ -1,0 +1,57 @@
+
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: logistics_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 4738
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - postgres
+      - redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+
+  ai-service:
+    build: ./ai-service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "3001:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: logistics_db
+      MB_DB_PORT: 5432
+      MB_DB_USER: postgres
+      MB_DB_PASS: 4738
+      MB_DB_HOST: postgres
+
+volumes:
+  pgdata:
