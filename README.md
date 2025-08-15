@@ -2,7 +2,8 @@
 
 A full-stack application for monitoring and analyzing driver performance, compliance, and safety trends.
 
-## Documentation: https://docs.google.com/document/d/1CoelF0zPx3EmWG7NGE2wVveEDkQRirva4RKGWVMRi0s/edit?usp=sharing
+## Documentation: 
+https://docs.google.com/document/d/1CoelF0zPx3EmWG7NGE2wVveEDkQRirva4RKGWVMRi0s/edit?usp=sharing
 
 ## Features
 
