@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Driver;
 use Illuminate\Http\Request;
 use App\Jobs\ValidateDriverCredentials;
+use Illuminate\Support\Facades\Redis;
 
 class DriverController extends Controller
 {
